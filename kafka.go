@@ -1,6 +1,10 @@
-package kafkatracking
+package kakfatracking
 
-import "os"
+import (
+	"os"
+
+	kafka "github.com/TranDuyThanh/kafka-client"
+)
 
 func ProduceMessage(topic, value string) bool {
 	brokerList := os.Getenv("KAFKA_BROKER_LIST")
