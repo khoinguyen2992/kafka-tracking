@@ -1,8 +1,9 @@
 package kafkatracking
 
 import (
-	"kafkatracking/mongodb"
 	"os"
+
+	"github.com/khoinguyen2992/kafkatracking/mongodb"
 
 	"gopkg.in/mgo.v2/bson"
 )
