@@ -5,6 +5,7 @@ import (
 
 	"github.com/khoinguyen2992/kafka-tracking/mongodb"
 
+	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
 
