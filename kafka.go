@@ -1,4 +1,4 @@
-package kakfatracking
+package kafkatracking
 
 import (
 	"os"
