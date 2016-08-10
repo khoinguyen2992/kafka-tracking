@@ -3,7 +3,7 @@ package kafkatracking
 import (
 	"os"
 
-	"github.com/khoinguyen2992/kafkatracking/mongodb"
+	"github.com/khoinguyen2992/kafka-tracking/mongodb"
 
 	"gopkg.in/mgo.v2/bson"
 )
