@@ -14,7 +14,7 @@ type APIGatewayHandler struct {
 func (this *APIGatewayHandler) Get() {
 	id := this.Ctx.Input.Param(":id")
 	message := Message{
-		RequestID: GenerateRequestID(),
+		RequestID: GenerateRequestID(id),
 		Message:   fmt.Sprintf("%s-%s", TOPIC_KAFKA_TRACKING_TO_ORDER_PROCESSOR, id),
 	}
 
