@@ -35,9 +35,26 @@ func (this *KafkaTrackingRepository) Create(kafkaTracking KafkaTracking) (KafkaT
 	return kafkaTracking, err
 }
 
-func (this *KafkaTrackingRepository) UpdateByRequestID(requestID string, kafkaTracking KafkaTracking) (KafkaTracking, error) {
+func (this *KafkaTrackingRepository) UpdateByRequestIDAtOP(requestID string, kafkaTracking KafkaTracking) (KafkaTracking, error) {
 	err := this.Collection.Update(bson.M{
 		"request_id": requestID,
-	}, kafkaTracking)
+	}, bson.M{
+		"$set": bson.M{
+			"arrive_op_at":  kafkaTracking.ArriveOPAt,
+			"message_at_op": kafkaTracking.MessageAtOP,
+		},
+	})
+	return kafkaTracking, err
+}
+
+func (this *KafkaTrackingRepository) UpdateByRequestIDAtNC(requestID string, kafkaTracking KafkaTracking) (KafkaTracking, error) {
+	err := this.Collection.Update(bson.M{
+		"request_id": requestID,
+	}, bson.M{
+		"$set": bson.M{
+			"arrive_nc_at":  kafkaTracking.ArriveNCAt,
+			"message_at_nc": kafkaTracking.MessageAtNC,
+		},
+	})
 	return kafkaTracking, err
 }

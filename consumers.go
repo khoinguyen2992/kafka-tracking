@@ -13,7 +13,7 @@ func (this OrderProcessorConsumer) Serve(message string) {
 	json.Unmarshal([]byte(message), &data)
 	repo := NewKafkaTrackingRepository()
 	now := time.Now()
-	repo.UpdateByRequestID(data.RequestID, KafkaTracking{
+	repo.UpdateByRequestIDAtOP(data.RequestID, KafkaTracking{
 		ArriveOPAt:  &now,
 		MessageAtOP: data.Message,
 	})
@@ -28,7 +28,7 @@ func (this NotificationCenterConsumer) Serve(message string) {
 	json.Unmarshal([]byte(message), &data)
 	repo := NewKafkaTrackingRepository()
 	now := time.Now()
-	repo.UpdateByRequestID(data.RequestID, KafkaTracking{
+	repo.UpdateByRequestIDAtNC(data.RequestID, KafkaTracking{
 		ArriveNCAt:  &now,
 		MessageAtNC: data.Message,
 	})
