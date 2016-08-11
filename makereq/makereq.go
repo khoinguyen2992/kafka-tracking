@@ -33,7 +33,7 @@ func main() {
 		go func(path string, requests <-chan int, result chan<- int, completed chan<- int) {
 			completed <- w
 			worker(path, requests, results)
-		}(path, requests, results, completed)
+		}(*path, requests, results, completed)
 	}
 	for i := 1; i <= *numThreads; i++ {
 		<-completed
