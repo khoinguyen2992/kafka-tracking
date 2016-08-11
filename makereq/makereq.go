@@ -22,6 +22,7 @@ func main() {
 	numRequests := flag.Int("messages", 100, "number of messages")
 	numThreads := flag.Int("threads", 20, "number of threads")
 	path := flag.String("path", "http://localhost:3000", "path to request")
+	flag.Parse()
 	requests := make(chan int, *numRequests)
 	results := make(chan int, *numRequests)
 	completed := make(chan int, *numThreads)
@@ -40,12 +41,12 @@ func main() {
 	}
 	fmt.Printf("Workers created at: %s\n", time.Now())
 
-	fmt.Println("Jobs creating at: %s\n", time.Now())
+	fmt.Printf("Jobs creating at: %s\n", time.Now())
 	for j := 1; j <= *numRequests; j++ {
 		requests <- j
 	}
 	close(requests)
-	fmt.Println("Jobs created at: %s\n", time.Now())
+	fmt.Printf("Jobs created at: %s\n", time.Now())
 
 	for i := 1; i <= *numRequests; i++ {
 		fmt.Println(<-results)
