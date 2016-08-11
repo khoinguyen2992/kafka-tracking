@@ -25,8 +25,8 @@ func main() {
 	requests := make(chan int, *numRequests)
 	results := make(chan int, *numRequests)
 	completed := make(chan int, *numThreads)
-	fmt.Printf("Num of messages: %d\n", numRequests)
-	fmt.Printf("Num of threads: %d\n", numThreads)
+	fmt.Printf("Num of messages: %d\n", *numRequests)
+	fmt.Printf("Num of threads: %d\n", *numThreads)
 
 	fmt.Printf("Workers creating at: %s\n", time.Now())
 	for w := 1; w <= *numThreads; w++ {
